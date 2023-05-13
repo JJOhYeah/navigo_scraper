@@ -40,6 +40,8 @@ class NavigoSpider(scrapy.Spider):
 
         if response.xpath(next_page_xpath).get():
             next_page_url = f'{self.base_url}{next_page_number}'
+            print(f'LOADING NEXT PAGE: {next_page_url}')
+
             yield scrapy.Request(next_page_url, callback=self.parse)
 
     def parse_link(self, response, news_article):
